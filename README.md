@@ -12,8 +12,8 @@
 <p align="center">支持上网、声音、远程、下载、HotPE模块、Edgeless插件、Legacy、UEFI、M.2、NVME、U盘启动、本地启动、生成ISO等</p>
 
 <p align="center">
-  <a href="https://www.hotpe.top">首页</a> •
-  <a href="https://wiki.hotpe.top">Wiki</a> •
+  <a href="https://www.hotpe.top">首页</a> -
+  <a href="https://wiki.hotpe.top">Wiki</a> -
   <a href="https://down.hotpe.top">下载站</a> 
 </p>
 
