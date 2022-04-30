@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="500,360" caption="0,0,0,32" sizebox="6,6,6,6" defaultfontcolor="#FFFFFFFF" >
+    <Style imagerectstyle="l,t,w,h" />
+
+    <Style name="layout_btn" align="left" hotimage="color='#FF3D7BBC'" />
+    <VerticalLayout bkcolor="#FF2067B2">
+      
+        <HorizontalLayout height="40">
+            <Label text="Choose your keyboard layout" font="18b" align="center" />
+            <Button name="::closebtn" text="" font="i16" width="32" height="32" padding="0,8,8,0" />
+        </HorizontalLayout>
+
+        <HorizontalLayout>
+          <VerticalLayout padding="20,0,20,0">
+          <button name="0000080c" text="Belgian French (fr-BE)" style="layout_btn" />
+          <button name="00000804" text="Chinese PRC (zh-CN)" style="layout_btn" />
+          <button name="00000404" text="Chinese Taiwan (zh-TW)" style="layout_btn" />
+          <button name="00000413" text="Dutch (nl-NL)" style="layout_btn" />
+          <button name="00000809" text="English UK (en-GB)" style="layout_btn" />
+          <button name="00000409" text="English US (en-US)" style="layout_btn" />
+          <button name="0000040c" text="French (fr-FR)" style="layout_btn" />
+          <button name="00000407" text="German (de-DE)" style="layout_btn" />
+          <button name="00000408" text="Greek (el-GR)" style="layout_btn" />
+          <button name="0000040d" text="Hebrew (he-IL)" style="layout_btn" />
+          </VerticalLayout>
+          <VerticalLayout padding="20,0,20,0">
+          <button name="0000040e" text="Hungarian (hu-HU)" style="layout_btn" />
+          <button name="00000410" text="Italian (it-IT)" style="layout_btn" />
+          <button name="00000412" text="Korean (ko-KR)" style="layout_btn" />
+          <button name="00000816" text="Portuguese (pt-PT)" style="layout_btn" />
+          <button name="00000416" text="Portuguese Brazil (pt-BR)" style="layout_btn" />
+          <button name="00000419" text="Russian (ru-RU)" style="layout_btn" />
+          <button name="0000040a" text="Spanish (es-ES)" style="layout_btn" />
+          <button name="0000041d" text="Swedish (sv-SE)" style="layout_btn" />
+          <button name="0000041f" text="Turkish (tr-TR)" style="layout_btn" />
+          <button text="" style="layout_btn" enabled="false" />
+          </VerticalLayout>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Window>

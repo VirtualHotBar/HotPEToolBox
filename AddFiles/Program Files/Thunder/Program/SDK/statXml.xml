@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <server>
+        <tcp host="pcdownsdk.rcv.sandai.net" port="80" />
+    </server>
+    <priority>
+        <level id="0" reporttime="0" />
+        <level id="1" reporttime="0" />
+        <level id="2" reporttime="1" />
+        <level id="3" reporttime="-1" />
+        <level id="4" reporttime="-2" />
+    </priority>
+    <stat>
+        <event index="3694" key="environment" priority="1" />
+        <event index="3727" key="upload" priority="1" />
+        <event index="3728" key="luaErrorInfo" priority="1" />
+        <event index="4630" key="download_p2sp_start" priority="1" />
+        <event index="4631" key="download_bt_main_start" priority="1" />
+        <event index="4632" key="download_bt_child_start" priority="1" />
+        <event index="4633" key="download_emule_start" priority="1" />
+        <event index="4634" key="download_magnet_start" priority="1" />
+        <event index="4635" key="download_p2sp_stop" priority="1" />
+        <event index="4636" key="download_bt_main_stop" priority="1" />
+        <event index="4637" key="download_bt_child_stop" priority="1" />
+        <event index="4638" key="download_emule_stop" priority="1" />
+        <event index="4639" key="download_magnet_stop" priority="1" />
+        <event index="4685" key="flowstat" priority="1" />
+        <event index="4718" key="emulemodule" priority="1" />
+        <event index="5146" key="xsdn" priority="1"/>
+    </stat>
+</config>
