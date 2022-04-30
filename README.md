@@ -18,6 +18,8 @@
 </p>
 
 ## 使用
+克隆本仓库，安装Python，然后挂载原版系统镜像到虚拟光驱，运行"HotPE生成脚本.PY"按照提示操作。
+演示视频：https://www.bilibili.com/video/BV1W3411a7YW?zw
 
-视频：https://www.bilibili.com/video/BV1W3411a7YW?zw
-
+## 发布版
+请到 https://www.hotpe.top/download 进行下载。
