@@ -1,0 +1,9 @@
+[PluginInstall]
+Description=Imagine - Image & Animation Lister Plugin for Total Commander
+DescriptionIta=Imagine - Plugin per Immagini e Animazioni per Total Commander
+DescriptionDeu=Imagine - Bild & Animation Lister Plugin für Total Commander
+DescriptionEsp=Imagine - Plugin visualizador de Imagen y Animación para Total Commander
+DescriptionDan=Imagine - Billed & Animation Lister-plugin for Total Commander
+Type=wlx
+File=Imagine.wlx
+DefaultDir=Plugins\wlx\Imagine

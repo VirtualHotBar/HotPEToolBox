@@ -1,0 +1,5 @@
+{
+  "name":"UI_Settings",
+  "title":"%{Settings}",
+  "baricon":"settings.ico"
+}

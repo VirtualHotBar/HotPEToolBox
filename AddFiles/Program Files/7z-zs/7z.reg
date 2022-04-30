@@ -1,0 +1,349 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\7-Zip-Zstandard]
+"Path64"="X:\\Program Files\\7z-zs\\"
+"Path"="X:\\Program Files\\7z-zs\\"
+
+[HKEY_CURRENT_USER\Software\7-Zip-Zstandard]
+"Path64"="X:\\Program Files\\7z-zs\\"
+"Path"="X:\\Program Files\\7z-zs\\"
+
+[HKEY_CURRENT_USER\Software\7-Zip-Zstandard\FM]
+"FolderShortcuts"=hex:
+"FolderHistory"=hex:
+"PanelPath0"="X:\\Windows\\System32\\"
+"FlatViewArc0"=dword:00000000
+"PanelPath1"=""
+"FlatViewArc1"=dword:00000000
+"ListMode"=dword:00000303
+"Position"=hex:0b,01,00,00,c1,00,00,00,43,05,00,00,57,03,00,00,00,00,00,00
+"Panels"=hex:01,00,00,00,00,00,00,00,12,02,00,00
+
+[HKEY_CURRENT_USER\Software\7-Zip-Zstandard\FM\Columns]
+"7-Zip.7z"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,09,00,00,00,01,00,00,00,64,00,00,\
+  00,13,00,00,00,01,00,00,00,64,00,00,00,0f,00,00,00,01,00,00,00,64,00,00,00,\
+  16,00,00,00,01,00,00,00,64,00,00,00,1b,00,00,00,01,00,00,00,64,00,00,00,1f,\
+  00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00
+"7-Zip.PE"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,4d,00,00,00,01,00,00,00,64,00,00,00,2f,00,00,00,01,00,00,00,64,00,00,\
+  00,24,00,00,00,01,00,00,00,64,00,00,00,30,00,00,00,01,00,00,00,64,00,00,00,\
+  1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00
+"FSFolder"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,0c,00,00,00,01,00,00,00,64,00,\
+  00,00,0a,00,00,00,01,00,00,00,64,00,00,00,1c,00,00,00,01,00,00,00,64,00,00,\
+  00,1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00,\
+  0b,00,00,00,00,00,00,00,64,00,00,00,09,00,00,00,00,00,00,00,64,00,00,00,08,\
+  00,00,00,00,00,00,00,64,00,00,00,5b,00,00,00,00,00,00,00,64,00,00,00,25,00,\
+  00,00,00,00,00,00,64,00,00,00,59,00,00,00,00,00,00,00,64,00,00,00
+"7-Zip.wim"=hex:01,00,00,00,04,00,00,00,00,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,0a,00,00,00,01,00,00,00,64,00,00,\
+  00,0b,00,00,00,01,00,00,00,64,00,00,00,09,00,00,00,01,00,00,00,64,00,00,00,\
+  16,00,00,00,01,00,00,00,64,00,00,00,0d,00,00,00,01,00,00,00,64,00,00,00,32,\
+  00,00,00,01,00,00,00,64,00,00,00,5b,00,00,00,01,00,00,00,64,00,00,00,25,00,\
+  00,00,01,00,00,00,64,00,00,00,3f,00,00,00,01,00,00,00,64,00,00,00,4b,00,00,\
+  00,01,00,00,00,64,00,00,00,1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,\
+  01,00,00,00,64,00,00,00,43,00,00,00,01,00,00,00,64,00,00,00,59,00,00,00,01,\
+  00,00,00,64,00,00,00,3e,00,00,00,01,00,00,00,64,00,00,00
+"7-Zip.Iso"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,35,00,00,00,01,00,00,00,64,00,00,\
+  00,36,00,00,00,01,00,00,00,64,00,00,00,1f,00,00,00,01,00,00,00,64,00,00,00,\
+  20,00,00,00,01,00,00,00,64,00,00,00
+"7-Zip.Udf"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,0b,00,00,00,01,00,00,00,64,00,00,\
+  00,1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00
+
+[HKEY_CURRENT_USER\Software\7-Zip-Zstandard\Options]
+"ContextMenu"=dword:00003f77
+
+
+[HKEY_USERS\.DEFAULT\Software\7-Zip-Zstandard]
+"Path64"="X:\\Program Files\\7z-zs\\"
+"Path"="X:\\Program Files\\7z-zs\\"
+
+[HKEY_USERS\.DEFAULT\Software\7-Zip-Zstandard\FM]
+"FolderShortcuts"=hex:
+"FolderHistory"=hex:
+"PanelPath0"="X:\\Windows\\System32\\"
+"FlatViewArc0"=dword:00000000
+"PanelPath1"=""
+"FlatViewArc1"=dword:00000000
+"ListMode"=dword:00000303
+"Position"=hex:0b,01,00,00,c1,00,00,00,43,05,00,00,57,03,00,00,00,00,00,00
+"Panels"=hex:01,00,00,00,00,00,00,00,12,02,00,00
+
+[HKEY_USERS\.DEFAULT\Software\7-Zip-Zstandard\FM\Columns]
+"RootFolder"=hex:01,00,00,00,00,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,\
+  a0,00,00,00
+"7-Zip.7z"=hex:01,00,00,00,07,00,00,00,00,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,09,00,00,00,01,00,00,00,64,00,00,\
+  00,13,00,00,00,01,00,00,00,64,00,00,00,0f,00,00,00,01,00,00,00,64,00,00,00,\
+  16,00,00,00,01,00,00,00,64,00,00,00,1b,00,00,00,01,00,00,00,64,00,00,00,1f,\
+  00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00
+"7-Zip.Rar5"=hex:01,00,00,00,04,00,00,00,00,00,00,00,04,00,00,00,01,00,00,00,\
+  a0,00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,\
+  00,00,00,0c,00,00,00,01,00,00,00,64,00,00,00,0a,00,00,00,01,00,00,00,64,00,\
+  00,00,0b,00,00,00,01,00,00,00,64,00,00,00,09,00,00,00,01,00,00,00,64,00,00,\
+  00,3f,00,00,00,01,00,00,00,64,00,00,00,0f,00,00,00,01,00,00,00,64,00,00,00,\
+  0d,00,00,00,01,00,00,00,64,00,00,00,10,00,00,00,01,00,00,00,64,00,00,00,11,\
+  00,00,00,01,00,00,00,64,00,00,00,13,00,00,00,01,00,00,00,64,00,00,00,17,00,\
+  00,00,01,00,00,00,64,00,00,00,16,00,00,00,01,00,00,00,64,00,00,00,2f,00,00,\
+  00,01,00,00,00,64,00,00,00,36,00,00,00,01,00,00,00,64,00,00,00,5a,00,00,00,\
+  01,00,00,00,64,00,00,00,5f,00,00,00,01,00,00,00,64,00,00,00,50,00,00,00,01,\
+  00,00,00,64,00,00,00,1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,\
+  00,00,64,00,00,00,2e,00,00,00,01,00,00,00,64,00,00,00,3e,00,00,00,01,00,00,\
+  00,64,00,00,00
+"7-Zip.Rar"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,08,00,00,00,01,00,00,00,64,00,\
+  00,00,0c,00,00,00,01,00,00,00,64,00,00,00,0a,00,00,00,01,00,00,00,64,00,00,\
+  00,0b,00,00,00,01,00,00,00,64,00,00,00,09,00,00,00,01,00,00,00,64,00,00,00,\
+  0f,00,00,00,01,00,00,00,64,00,00,00,0d,00,00,00,01,00,00,00,64,00,00,00,0e,\
+  00,00,00,01,00,00,00,64,00,00,00,10,00,00,00,01,00,00,00,64,00,00,00,11,00,\
+  00,00,01,00,00,00,64,00,00,00,13,00,00,00,01,00,00,00,64,00,00,00,17,00,00,\
+  00,01,00,00,00,64,00,00,00,16,00,00,00,01,00,00,00,64,00,00,00,21,00,00,00,\
+  01,00,00,00,64,00,00,00,50,00,00,00,01,00,00,00,64,00,00,00,1f,00,00,00,01,\
+  00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00
+"FSFolder"=hex:01,00,00,00,04,00,00,00,01,00,00,00,04,00,00,00,01,00,00,00,a0,\
+  00,00,00,07,00,00,00,01,00,00,00,64,00,00,00,0c,00,00,00,01,00,00,00,64,00,\
+  00,00,0a,00,00,00,01,00,00,00,64,00,00,00,1c,00,00,00,01,00,00,00,64,00,00,\
+  00,1f,00,00,00,01,00,00,00,64,00,00,00,20,00,00,00,01,00,00,00,64,00,00,00,\
+  0b,00,00,00,00,00,00,00,64,00,00,00,09,00,00,00,00,00,00,00,64,00,00,00,08,\
+  00,00,00,00,00,00,00,64,00,00,00,5b,00,00,00,00,00,00,00,64,00,00,00,25,00,\
+  00,00,00,00,00,00,64,00,00,00,59,00,00,00,00,00,00,00,64,00,00,00
+
+[HKEY_USERS\.DEFAULT\Software\7-Zip-Zstandard\Options]
+"ContextMenu"=dword:00000327
+"WorkDirType"=dword:00000001
+"TempRemovableOnly"=dword:00000000
+"WorkDirPath"=""
+"MenuIcons"=dword:00000001
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.7z]
+@="7-Zip.7z"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.arj]
+@="7-Zip.arj"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.bz2]
+@="7-Zip.bz2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.bzip2]
+@="7-Zip.bzip2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.cpio]
+@="7-Zip.cpio"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.gz]
+@="7-Zip.gz"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.gzip]
+@="7-Zip.gzip"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.lzh]
+@="7-Zip.lzh"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.lzma]
+@="7-Zip.lzma"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.rar]
+@="7-Zip.rar"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.tar]
+@="7-Zip.tar"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.taz]
+@="7-Zip.taz"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.tbz]
+@="7-Zip.tbz"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.tbz2]
+@="7-Zip.tbz2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.zip]
+@="7-Zip.zip"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved]
+"{23170F69-40C1-278A-1000-000100020000}"="7-Zip Shell Extension"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\DragDropHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\DragDropHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{23170F69-40C1-278A-1000-000100020000}]
+@="7-Zip Shell Extension"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{23170F69-40C1-278A-1000-000100020000}\InprocServer32]
+@="X:\\Program Files\\7z-zs\\7-zip.dll"
+"ThreadingModel"="Apartment"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.7z]
+@="7z Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.7z\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,0"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.7z\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.arj]
+@="arj Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.arj\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,4"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.arj\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bz2]
+@="bz2 Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bz2\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bz2\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bzip2]
+@="bzip2 Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bzip2\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.bzip2\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cab]
+@="cab Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cab\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,7"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cab\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cpio]
+@="cpio Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cpio\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,12"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.cpio\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gz]
+@="gz Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gz\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,14"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gz\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gzip]
+@="gzip Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gzip\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,14"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.gzip\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzh]
+@="lzh Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzh\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,6"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzh\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzma]
+@="lzma Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzma\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,16"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.lzma\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rar]
+@="rar Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rar\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,3"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rar\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rpm]
+@="rpm Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rpm\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,10"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.rpm\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tar]
+@="tar Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tar\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,13"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tar\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.taz]
+@="taz Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.taz\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,5"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.taz\shell\op
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz]
+@="tbz Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""en\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz2]
+@="tbz2 Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz2\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.tbz2\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip]
+@="zip Archive"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\DefaultIcon]
+@="X:\\Program Files\\7z-zs\\7z.dll,1"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\shell\open\command]
+@="\"X:\\Program Files\\7z-zs\\7zFM.exe\" \"%1\""
