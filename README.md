@@ -17,4 +17,7 @@
   <a href="https://down.hotpe.top">下载站</a> 
 </p>
 
-<iframe src="//player.bilibili.com/player.html?aid=423118272&bvid=BV1W3411a7YW&cid=480485678&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+## 使用
+
+视频：https://www.bilibili.com/video/BV1W3411a7YW?zw
+
