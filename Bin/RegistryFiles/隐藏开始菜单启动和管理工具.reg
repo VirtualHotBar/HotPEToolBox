@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\pe_Soft\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{B97D20BB-F46A-4C97-BA10-5E3608430854}]
+"Attributes"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\pe_Soft\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{724EF170-A42D-4FEF-9F26-B60E846FBA4F}]
+"Attributes"=dword:00000002

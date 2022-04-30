@@ -1,0 +1,9 @@
+DriverDatabase\DeviceIds\ms_rndisusb
+DriverDatabase\DeviceIds\ms_rndisusb6
+DriverDatabase\DeviceIds\USB\Class_EF&SubClass_04&Prot_01
+DriverDatabase\DeviceIds\USB\MS_COMP_RNDIS&MS_SUBCOMP_5162001
+DriverDatabase\DriverFiles\rndismp6.sys
+DriverDatabase\DriverFiles\usb80236.sys
+DriverDatabase\DriverInfFiles\netrndis.inf
+DriverDatabase\DriverInfFiles\rndiscmp.inf
+
