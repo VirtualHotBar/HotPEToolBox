@@ -23,3 +23,7 @@
 
 ## 发布版
 请到 https://www.hotpe.top/download 进行下载。
+
+## 许可证
+
+HotPE的自编代码基于MIT许可证开源
