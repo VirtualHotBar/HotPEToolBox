@@ -1,1 +1,0 @@
-function RegisterObject()end
