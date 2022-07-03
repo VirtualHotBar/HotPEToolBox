@@ -1,0 +1,4 @@
+ProgramData\Microsoft\Windows\Start Menu\
+Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\
+Program Files\Common Files\
+Program Files\

@@ -1,0 +1,96 @@
+CALL @windows1
+_SUB windows1,W400H590,插件下载器,,X:\Users\Icon\shortcut\down.ico,,
+
+GROU Group1,L15T15W360H80,浏览器
+GROU Group2,L15T95W360H80,远控
+GROU Group3,L15T175W360H80,通讯
+GROU Group4,L15T255W360H80,安全
+GROU Group5,L15T335W360H80,工具
+GROU Group5,L15T415W360H80,下载
+
+ITEM Button1,L40T40W145H40,    Chrome,TEAM envi w="Google Chrome"|call @windows2,X:\Users\Icon\down\chrome.ico
+ITEM Button2,L210T40W145H40,    世界之窗,TEAM envi w=世界之窗浏览器|call @windows2,X:\Users\Icon\down\theworld.ico
+ITEM Button3,L40T120W145H40,     Anydesk,TEAM envi w=Anydesk|call @windows2,X:\Users\Icon\down\anydesk.ico
+ITEM Button4,L210T120W145H40,     向日葵,TEAM envi w=向日葵远程控制|call @windows2,X:\Users\Icon\down\XRK.ico
+ITEM Button5,L40T200W145H40,     微信,TEAM envi w=Wechat|call @windows2,X:\Users\Icon\down\Wechat.ico
+ITEM Button6,L210T200W145H40,    QQ,TEAM envi w=QQ|call @windows2,X:\Users\Icon\down\qq.ico
+ITEM Button7,L40T280W145H40,     360急救箱,TEAM envi w=360急救箱|call @windows2,X:\Users\Icon\down\sk.ico
+ITEM Button8,L210T280W145H40,     火绒安全,TEAM envi w=火绒安全|call @windows2,X:\Users\Icon\down\huorong.ico
+ITEM Button9,L40T360W145H40,      傲梅分区助手,TEAM envi w=分区助手|call @windows2,X:\Users\Icon\down\part.ico
+ITEM Button10,L210T360W145H40,      驱动总裁,TEAM envi w=驱动总裁|call @windows2,X:\Users\Icon\down\drv.ico
+ITEM Button11,L40T440W145H40,    IDM,TEAM envi w=IDM|call @windows2,X:\Users\Icon\down\IDM.ico
+ITEM Button12,L210T440W145H40,      迅雷,TEAM envi w=迅雷|call @windows2,X:\Users\Icon\down\thunder.ico
+
+LABE Label1,L30T510W320H15,获取更多插件请使用插件包管理工具ept，点击查看教程,call @ept
+
+//LABE Label2,L40T530W320H15,点击获取系统镜像下载地址,call windown
+
+_END
+
+
+
+
+_SUB windows2,W300H120,确认下载,,Shell32.DLL#296,,
+
+LABE Label1,L20T20W400H25,是否安装 %w% 插件？
+
+ITEM Button1,L20T55W75H25,安装,team exec cmd /c "ept install %w% -y"|kill \确认下载,0
+ITEM Button2,L110T55W75H25,安装并保存,team exec cmd /c "ept install %w% -a"|kill \确认下载,0
+ITEM Button2,L200T55W75H25,取消,kill \确认下载,0
+_END
+
+
+
+
+_SUB ept,W280H300,点击二维码打开cmd,,Shell32.DLL#296,,
+IMAG Image1,L1T1W270H270,X:\Program Files\Edgeless\plugin_downloader\qrcode.png,exec cmd.exe
+_END
+
+
+
+
+_SUB windown,W370H220,下载系统镜像,,X:\Users\Icon\shortcut\down.ico,,
+
+//IMAG Image1,L25T10W10H10,X:\Users\Icon\down\win.ico
+IMAG Image1,L28T10W20H20,X:\Users\Imdisk\Icon\down\windows.ico
+LABE Label3,L68T15W320H18,Windows10 64位原版镜像（实时更新，推荐下载）
+LABE Label4,L13T48W80H20,下载链接：
+EDIT Edit1,L83T45W260H20,http://s.edgeless.top/Windown.php?token=3a90af63,,0x008
+ITEM Button8,L120T75W80H30,立即下载,call browse,0
+ITEM Button9,L220T75W80H30,调用IDM下载,exec %ProgramFiles%\Edgeless\IDM\IDMan.exe /d http://s.edgeless.top/Windown.php?token=3a90af63,0
+IFEX %ProgramFiles%\Edgeless\IDM\IDMan.exe,!ENVI @Button9.Enable=0
+
+
+IMAG Image2,L28T120W20H20,X:\Users\Icon\down\windsys.ico
+LABE Label5,L60T125W320H18,Windsys（也许是最适合年轻人使用的第三方社区系统）
+LABE Label6,L13T158W80H20,官方网站：
+EDIT Edit2,L83T155W260H20,https://windsys.whatk.me/,,0x008
+
+_END
+
+
+_SUB browse
+BROW Tag,*D:\,选择保存目录
+MSTR disk=0,1,%Tag%
+IFEX %disk%:\<5120,call retry1
+FIND $%Tag%=,!{IFEX %disk%:\<5120,!call startDown star}
+_END
+
+
+_SUB retry1,W300H150,磁盘空间不足,,X:\Users\Icon\shortcut\update.ico,,
+LABE Label1,L40T20W400H15,目标磁盘 %disk% 可用空间小于5GB，请重新选择
+ITEM Button1,L110T60W80H30,确定,team kill \磁盘空间不足
+_END
+
+
+_SUB startDown
+exec =!cmd /c "echo 3a90af63>target.txt"
+exec =!cmd /c "echo Windows10 64位原版镜像>name.txt"
+exec =!cmd /c "echo %Tag%>savepath.txt"
+exec =!cmd /c "echo Windown>php.txt"
+exec =!cmd /c "echo Windows10_64位原版镜像_%date:~0,4%%date:~5,2%%date:~8,2%.iso>savename.txt"
+exec downloader.cmd
+kill \下载系统镜像
+kill \插件下载器
+_END
+

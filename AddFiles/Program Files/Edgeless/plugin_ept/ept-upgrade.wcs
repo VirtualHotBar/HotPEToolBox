@@ -1,0 +1,67 @@
+MDIR X:\Users\ept\upgrade
+
+//查找Edgeless盘符
+FORX !\Edgeless\version.txt,EL_Path,1,writ X:\Users\Log.txt,$+0,ept-upgrade 使用%EL_Path%作为Edgeless路径
+IFEX %EL_Path%,!
+{
+    FORX !\Edgeless\version_Disk.txt,EL_Path,1,writ X:\Users\Log.txt,$+0,ept-upgrade 使用%EL_Path%作为Edgeless路径
+}
+MSTR EL_Part=0,1,%EL_Path%
+FILE X:\Users\ept\upgrade\*.txt
+WRIT X:\Users\ept\upgrade\EL_Part.txt,$+0,%EL_Part%
+
+//记录7zl文件的完整文件名和插件名，然后修改拓展名为7z
+forx %EL_Part%:\Edgeless\Resource\*.7zl,filePath,0,
+{
+    //调用分割器获取插件名
+    name fileName=%filePath%
+    writ X:\Users\ept\upgrade\origin.txt,$0,%fileName%
+    exec =!"X:\Program Files\Edgeless\plugin_ept\ept-upgrade-cutstr.cmd"
+    read X:\Users\ept\upgrade\name.txt,1,pName
+
+    //记录7zl文件的完整文件名和插件名
+    writ X:\Users\ept\upgrade\RenameList_FullName.txt,$+0,%fileName%
+    writ X:\Users\ept\upgrade\RenameList_Name.txt,$+0,%pName%
+
+    //修改拓展名为7z
+    file %filePath%>>%fileName%.7z
+}
+
+//遍历7z文件，检查是否有更新
+forx /s %EL_Part%:\Edgeless\Resource\*.7z,filePath,0,
+{
+    //调用分割器获取插件详情
+    name fileName=%filePath%
+    writ X:\Users\ept\upgrade\origin.txt,$0,%fileName%
+    exec =!"X:\Program Files\Edgeless\plugin_ept\ept-upgrade-cutstr.cmd"
+    read X:\Users\ept\upgrade\name.txt,1,pName
+    read X:\Users\ept\upgrade\ver.txt,1,pVer
+    read X:\Users\ept\upgrade\au.txt,1,pAu
+
+    //调用版本号查询
+    exec =!"X:\Program Files\Edgeless\plugin_ept\ept-getver.cmd" "%pName%"
+    ifex X:\Users\ept\upgrade\ver_ol.txt,
+    {
+        //版本号不一致则认为存在更新，写入参数文件
+        read X:\Users\ept\upgrade\ver_ol.txt,1,olVer
+        writ X:\Users\Log.txt,$+0,ept-upgrade %pName%，olVer:%olVer%，pVer：%pVer%
+        ifex '%pVer%' = '%olVer%',!
+        {
+            writ X:\Users\ept\upgrade\UpgradeList_User.txt,$+0,%pName%  %pVer%》%olVer%
+            writ X:\Users\ept\upgrade\UpgradeList_Path.txt,$+0,%filePath%
+            writ X:\Users\ept\upgrade\UpgradeList_Name.txt,$+0,"%pName%"
+            writ X:\Users\ept\upgrade\UpgradeList_FullName.txt,$+0,%fileName%
+        }
+    }
+
+    //记录在线库中不存在的插件
+    ifex X:\Users\ept\upgrade\ver_ol.txt,!
+    {
+        writ X:\Users\ept\upgrade\UpgradeList_Invaild.txt,$+0,%fileName%.7z：库中不存在名为%pName%的插件
+    }
+}
+file "X:\Users\ept\upgrade\au.txt"
+file "X:\Users\ept\upgrade\name.txt"
+file "X:\Users\ept\upgrade\ver.txt"
+file "X:\Users\ept\upgrade\ver_ol.txt"
+file "X:\Users\ept\upgrade\origin.txt"

@@ -1,0 +1,4 @@
+[wim]
+boot分卷=1
+install分卷=1
+[功能]

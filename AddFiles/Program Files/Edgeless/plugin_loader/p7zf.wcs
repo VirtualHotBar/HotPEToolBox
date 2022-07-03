@@ -1,0 +1,19 @@
+call @windows1
+
+_SUB windows1,W340H120,插件热加载工具,,X:\Users\Icon\type\plugin.ico,,
+LABE Label1,L80T20W300H20,是否将这个文件作为插件包加载？
+
+ITEM Button1,L31T55W70H25,确定,team exec =cmd /c "md X:\Users\load7zf"|kill \插件热加载工具,0
+ITEM Button2,L135T55W70H25,LocalBoost,call installToBoost
+ITEM Button2,L240T55W70H25,取消,kill \插件热加载工具,0
+_END
+
+
+
+_SUB installToBoost,W300H120,插件加速仓库,,X:\Users\Icon\type\plugin.ico,,
+
+LABE Label1,L20T20W260H40,Edgeless LocalBoost将会把此插件安装至本地磁盘，以加快Edgeless在此电脑上的启动速度
+ITEM Button1,L40T55W75H25,安装,team exec =cmd /c "md X:\Users\installToBoost"|kill \插件加速仓库|kill \插件热加载工具,0
+ITEM Button2,L180T55W75H25,取消,kill \插件加速仓库,0
+
+_END

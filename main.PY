@@ -8,8 +8,6 @@ def 清空目录 (path):
     os.system("rd /s /Q \""+ path + "\"")
     if os.path.exists(path)==False:
         os.makedirs(path)
-        
-    
     return
 def 复制目录 (path,pathGoTo):
     os.system("xcopy \""+ path+"\" \"" + pathGoTo + "\" /Q /Y /H /R /E")
@@ -26,6 +24,12 @@ def 导入注册表项 (FileName):
 def 复制注册表项 (KeyName,toKeyName):
     os.system ("reg copy \""+KeyName+"\" \""+toKeyName+"\"  /S /F")
     return    
+def 加密PECMD脚本 (path):
+    os.system(运行目录+"Bin\Tools\pecmd.exe \"CMPS -bin "+path+","+path+".new\"")
+    os.remove(path)
+    os.rename(path+".new",path)
+    return
+
 
 os.system("title HotPE生成脚本")
 
@@ -43,63 +47,32 @@ print("正在清理文件")
 清空目录 (运行目录 + "TempFile\\apply")
 清空目录 (运行目录 + "TempFile\\config")
 
-
-
-光驱盘符 = input ("输入虚拟光驱盘符(不加冒号)：")
-installWim = 光驱盘符 + ":\\sources\\install.wim"
-bootWim = 光驱盘符 + ":\\sources\\boot.wim"
+bootWim = 运行目录 + "boot.wim"
 boot分卷 = PE配置.get('wim', 'boot分卷')
-install分卷 = PE配置.get('wim', 'install分卷')
 wimlibImagex= 运行目录 + "Bin\\Tools\\wimlib\\wimlib-imagex.exe"
 
 print("正在从boot.wim提取文件")
 
 os.system(wimlibImagex+" apply "+bootWim+" "+str(boot分卷)+" "+运行目录+"TempFile\\apply")
 
-print("正在从boot.wim提取Cat文件")
-清空目录 (运行目录 + "TempFile\\apply\\Windows\\System32\\CatRoot\\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\\")
-清空目录 (运行目录 + "TempFile\\apply\\Windows\\System32\\CatRoot\\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\\")
-os.system(wimlibImagex+" extract "+bootWim+" "+str(boot分卷)+" @"+运行目录+"Bin\\Files\\Cat.txt "+"--dest-dir="+运行目录+"TempFile\\apply "+" --nullglob --no-acls")
-
-print("正在清理WinSxS文件")
-清空目录 (运行目录 + "TempFile\\apply\\Windows\\WinSxS\\")
-
-print("正在从install.wim提取文件")
-#os.system(wimlibImagex+" extract "+installWim+" "+str(install分卷)+" \Windows\System32\Recovery\winre.wim "+"--dest-dir="+运行目录+"TempFile\\ "+" --nullglob --no-acls")
-os.system(wimlibImagex+" extract "+installWim+" "+str(install分卷)+" @"+运行目录+"Bin\\Files\\install.txt "+"--dest-dir="+运行目录+"TempFile\\apply "+" --nullglob --no-acls")
-
 print("正在从删除无用文件")
-for line in open(运行目录+"Bin\\Files\\delFiles.txt", "r"):  #打开文件
+for line in open(运行目录+"delFiles.txt", "r"):  #打开文件
     rs = line.rstrip('\n')  # 移除行尾换行符
     if os.path.isfile(运行目录+"TempFile\\apply\\"+rs):
         os.system("del "+运行目录+"TempFile\\apply\\"+rs+" /F /Q")
     if os.path.isdir(运行目录+"TempFile\\apply\\"+rs):
         os.system("rd "+运行目录+"TempFile\\apply\\"+rs+" /S /Q")
-
-for line in open(运行目录+"Bin\\Files\\delFilesMore.txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    if os.path.isfile(运行目录+"TempFile\\apply\\"+rs):
-        os.system("del "+运行目录+"TempFile\\apply\\"+rs+" /F /Q")
-    if os.path.isdir(运行目录+"TempFile\\apply\\"+rs):
-        os.system("rd "+运行目录+"TempFile\\apply\\"+rs+" /S /Q")
-
-for line in open(运行目录+"Bin\\Files\\delFilesMore(drivers).txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    if os.path.isfile(运行目录+"TempFile\\apply\\"+rs):
-        os.system("del "+运行目录+"TempFile\\apply\\"+rs+" /F /Q")
-    if os.path.isdir(运行目录+"TempFile\\apply\\"+rs):
-        os.system("rd "+运行目录+"TempFile\\apply\\"+rs+" /S /Q")
-
-for line in open(运行目录+"Bin\\Files\\clearDir.txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    清空目录(运行目录+"TempFile\\apply\\"+rs)
-    
-print("正在从install.wim提取注册表文件:system,drivers")
-os.system(wimlibImagex+" extract "+installWim+" "+str(install分卷)+" \Windows\System32\config\system "+"--dest-dir="+运行目录+"TempFile\\config "+" --nullglob --no-acls")
-os.system(wimlibImagex+" extract "+installWim+" "+str(install分卷)+" \Windows\System32\config\drivers "+"--dest-dir="+运行目录+"TempFile\\config "+" --nullglob --no-acls")
 
 print("正在添加文件:AddFiles\*")
 复制目录(运行目录+"AddFiles",运行目录+"TempFile\\apply")
+
+print("正在添加文件:Edgeless\*")
+复制目录(运行目录+"Edgeless",运行目录+"TempFile\\apply")
+
+print("正在加密Pecmd脚本文件")
+#加密PECMD脚本(运行目录+"TempFile\\apply\\windows\\system32\\PECMD.ini")
+#加密PECMD脚本(运行目录+"TempFile\\apply\\Program Files\\PETools.ini")
+#加密PECMD脚本(运行目录+"TempFile\\apply\\Program Files\\RegistryFiles\\Edgeless\\注册Edgeless.ini")
 
 print("正在挂载配置单元")
 挂载配置单元 (运行目录+"TempFile\\config\\drivers","hklm\os_drv")
@@ -113,10 +86,10 @@ print("正在导入注册表项")
 
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\SOFT_精简注册表.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\CMD字体和透明.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\explorer.reg")
+#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\explorer.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\HDTunePro.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_def.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_soft.reg")
+#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_def.reg")
+#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_soft.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\Pecmd.ini.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\StartIsBack_浅.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\Windows颜色模式浅.reg")
@@ -153,31 +126,15 @@ print("正在导入注册表项")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\右键显示设置.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\HashTab.reg")
 导入注册表项 (运行目录 + "Bin\\RegistryFiles\\WinX开机动画.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\7-ZIP.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\7-Zip-Zstandard.reg")
 
 
-print("正在修改C:\\为X:\\")
-os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft -y C:\\ -y -r X:\\")
+#os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft -y C:\\ -y -r X:\\")
 
-print("正在处理Interactive User")
-os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft\Classes\AppID -y Interactive User -r")
+#os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft\Classes\AppID -y Interactive User -r")
 
-print("复制必要的SYSTEM注册表到PE")
-for line in open(运行目录+"\\Bin\\RegistryFiles\\pe_sys.txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    复制注册表项("hklm\\os_sys\\"+rs,"hklm\\pe_sys\\"+rs)
+#os.system(运行目录 + "copyDriver.bat")
 
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_sys.reg")
-
-print("复制必要的drivers注册表到PE")
-for line in open(运行目录+"\\Bin\\RegistryFiles\\pe_drv.txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    复制注册表项("hklm\\os_drv\\"+rs,"hklm\\pe_drv\\"+rs)
-
-os.system(运行目录 + "copyDriver.bat")
-
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_drv.reg")  
+#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_drv.reg")  
 
 print("正在修改图标")
 if os.path.exists(运行目录+"TempFile\\apply\\Windows\\System32\\imageres.dll"):

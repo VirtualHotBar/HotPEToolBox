@@ -1,0 +1,3 @@
+TIPS Edgeless自定义插件加载程序,自定义插件包加载完成！,2000,4,SHELL32.DLL#301
+//kill explorer
+WAIT 3000

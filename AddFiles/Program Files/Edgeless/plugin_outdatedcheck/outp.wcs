@@ -1,0 +1,16 @@
+CALL @windows1
+_SUB windows1,W480H330,过期插件提示,,Shell32.DLL#244,,
+
+read outdated.txt,*,info
+LABE Label1,L30T20W450H50,Edgeless检测到您的U盘中存在以下插件,,,18
+MEMO Memo1,L100T70W280H88,,X:\Users\outdated.txt,0x8
+LABE Label2,L110T170W280H25,这些插件已被官方列为过期的插件！,,,12
+LABE Label3,L25T225W450H25,在本次启动中，这些插件已被加载并启用，但是我们建议您尽快处理它们！,,,10
+
+ifex X:\Users\nes_reload,LABE Label4,L15T200W450H25,其中Nes_Inport.7z的存放位置错误，它应当替换Edgeless文件夹内的同名文件,,0x0000FF,9
+file X:\Users\nes_reload
+ITEM Button1,L45T250W105H30,全部禁用,TEAM kill \过期插件提示|exec !rn.cmd
+ITEM Button2,L185T250W105H30,手动管理,team exec !openexp.cmd|file X:\Users\outdated.txt|file X:\Users\7zlist.txt
+ITEM Button3,L325T250W105H30,暂时忽略,team kill \过期插件提示|file X:\Users\outdated.txt|file X:\Users\7zlist.txt
+
+_END

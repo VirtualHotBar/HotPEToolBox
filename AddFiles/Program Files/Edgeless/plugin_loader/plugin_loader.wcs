@@ -1,0 +1,6 @@
+BROW Tag,,ÇëÑ¡Ôñ²å¼þ°ü
+FIND $%Tag%=,!Call NO_CAB
+
+_SUB NO_CAB
+exec =load.cmd %Tag%
+"X:\Program Files\Edgeless\plugin_loader\pecmd.exe" "X:\Program Files\Edgeless\plugin_loader\7zftip.wcs"

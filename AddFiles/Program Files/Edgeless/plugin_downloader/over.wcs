@@ -1,0 +1,11 @@
+call @windows1
+
+_SUB windows1,W320H200,下载完成,,Shell32.DLL#296,,
+
+ITEM Button1,L30T60W120H80,加载并保存到U盘,team exec ="%ProgramFiles%\Edgeless\plugin_loader\load.cmd" "X:\Program Files\Edgeless\plugin_downloader\tar.7zf"|exec "X:\Program Files\Edgeless\plugin_loader\7zftip.wcs"|exec !save.cmd|exec GUI.wcs|kill \下载完成,0
+ITEM Button2,L170T60W120H40,仅加载,team exec ="%ProgramFiles%\Edgeless\plugin_loader\load.cmd" "X:\Program Files\Edgeless\plugin_downloader\tar.7zf"|exec "X:\Program Files\Edgeless\plugin_loader\7zftip.wcs"|exec GUI.wcs|kill \下载完成,0
+ITEM Button3,L170T100W120H40,仅保存到U盘,team exec !save.cmd|exec GUI.wcs|kill \下载完成,0
+
+
+LABE Label1,L60T20W300H20,插件已下载完成，请选择下一步操作
+_END

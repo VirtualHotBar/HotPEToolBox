@@ -1,4 +1,5 @@
 [Source_NT6]
+F:\обть\22000.526.220203-1933.CO_RELEASE_SVC_PROD2_CLIENTMULTI_X64FRE_ZH-CN.ISO
 [Drivers_NT6]
 [UnattendedFile_NT6]
 [RegTweaks_NT6]
@@ -12,8 +13,13 @@
 [RunAfter_NT5]
 [VHD]
 [Unattend_User]
+vhb
 [Unattend_Name]
+vhb
 [Unattend_Org]
+1
 [Unattend_Computer]
+vhbpc
 [Unattend_Workgroup]
+1
 [WimCaptureTarget]
