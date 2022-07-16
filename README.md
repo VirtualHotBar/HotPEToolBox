@@ -8,7 +8,7 @@
 
 <h4 align="center">一个纯净、强大、优雅的Win11PE</h4>
 
-<p align="center">支持上网、声音、远程、下载、HotPE模块、Edgeless插件、Legacy、UEFI、M.2、NVME、U盘启动、本地启动、生成ISO等</p>
+<p align="center">支持上网、声音、远程、下载、HotPE模块、Edgeless插件、MTP丶RNDIS、Legacy、UEFI、M.2、NVME、USB设备弹出、搜索功能、MSI、BitLocker磁盘解锁、网络共享、U盘启动、本地启动、生成ISO等</p>
 
 <p align="center">
   <a href="https://www.hotpe.top">首页</a> -
