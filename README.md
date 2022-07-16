@@ -13,7 +13,8 @@
 <p align="center">
   <a href="https://www.hotpe.top">首页</a> -
   <a href="https://wiki.hotpe.top">Wiki</a> -
-  <a href="https://down.hotpe.top">下载站</a> 
+  <a href="https://down.hotpe.top">下载站</a>  -
+  <a href="https://blog.hotpe.top">Blog</a> 
 </p>
 
 ## 发布版
