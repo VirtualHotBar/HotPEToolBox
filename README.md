@@ -14,7 +14,7 @@
   <a href="https://www.hotpe.top">首页</a> -
   <a href="https://docs.hotpe.top">文档</a> -
   <a href="https://down.hotpe.top">下载站</a>  -
-  <a href="https://blog.hotpe.top">Blog</a> 
+  <a href="https://blog.hotpe.top">博客</a> 
 </p>
 
 ## 发布版
