@@ -22,6 +22,7 @@
 请到 https://www.hotpe.top/download 进行下载。
 
 ## 使用
+本仓库为HotPEBuildTools(HotPE的构建工具)
 
 #### 1.开发环境
 
