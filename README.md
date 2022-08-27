@@ -31,7 +31,7 @@
 
 
 运行 "\HotPEBuildTools.PY"  根据提示操作
-![](https://s1.ax1x.com/2022/08/27/vRoKrq.png)
+![](https://tc.mouyjy.com/i/2022/08/27/6309db1b44a4d.png)
 
 演示视频：https://www.bilibili.com/video/BV1W3411a7YW?zw
 
