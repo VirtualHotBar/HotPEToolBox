@@ -1,7 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\pe_soft\Classes\*\shell\notepad]
-@="用记事本打开 "
-
-[HKEY_LOCAL_MACHINE\pe_soft\Classes\*\shell\notepad\command]
-@="notepad %1"

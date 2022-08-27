@@ -1,176 +1,263 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
+from __future__ import print_function
+import ctypes
+from runpy import run_path
+import os
 import sys
 import os
 import configparser
+import time
 
-def 清空目录 (path):
+runPath = os.path.split( os.path.realpath( sys.argv[0] ) )[0] + "\\"
+runFile =sys.argv[0]
+
+
+
+def emptyDir (path):#清空目录
     os.system("rd /s /Q \""+ path + "\"")
     if os.path.exists(path)==False:
         os.makedirs(path)
     return
-def 复制目录 (path,pathGoTo):
+
+def copyDir (path,pathGoTo):#复制目录
     os.system("xcopy \""+ path+"\" \"" + pathGoTo + "\" /Q /Y /H /R /E")
     return
-def 挂载配置单元 (FileName,KeyName):
+
+def loadConfigUnit (FileName,KeyName):#加载配置单元
     os.system ("reg load "+KeyName+" \""+FileName+"\"")
     return
-def 卸载配置单元 (KeyName):
+
+def unloadConfigUnit (KeyName):#卸载配置单元
     os.system ("reg unload "+KeyName)
     return
-def 导入注册表项 (FileName):
+
+def importReg (FileName):#导入注册表
     os.system ("reg import \""+FileName+"\"")
     return
-def 复制注册表项 (KeyName,toKeyName):
+
+def copyRegKey (KeyName,toKeyName):#复制注册表项
     os.system ("reg copy \""+KeyName+"\" \""+toKeyName+"\"  /S /F")
-    return    
-def 加密PECMD脚本 (path):
-    os.system(运行目录+"Bin\Tools\pecmd.exe \"CMPS -bin "+path+","+path+".new\"")
+    return
+
+def encryptPecmdScript (path):#加密PECMD脚本
+    os.system(runPath+"Bin\Tools\pecmd.exe \"CMPS -bin "+path+","+path+".new\"")
     os.remove(path)
     os.rename(path+".new",path)
     return
 
+def begin ():
+    # 初始化
+    os.system("title HotPEBuildTools 2.4.2022.8")
+    
+    print("正在清理文件\n")
+    emptyDir (runPath+"TempFile\\apply")
+    emptyDir (runPath + "TempFile\\apply")
+    emptyDir (runPath + "TempFile\\config")
 
-os.system("title HotPE生成脚本")
+    wimlibImagex= runPath + "Bin\\Tools\\wimlib\\wimlib-imagex.exe"
+
+    isoLetter = input ("输入虚拟光驱盘符(不加冒号)：")
+    print("\n")
+
+    installWim = isoLetter + ":\\sources\\install.wim"
+    bootWim = isoLetter + ":\\sources\\boot.wim"
+
+    os.system (wimlibImagex + " info "+isoLetter+":\\sources\\boot.wim|FIND  \"Description\" ")
+    bootVolume = input ("输入Boot.wim分卷(从1开始)：")
+    print("\n")
+
+    os.system (wimlibImagex + " info "+isoLetter+":\\sources\\install.wim|FIND  \"Display Name\" ")
+    installVolume = input ("输入install.wim分卷(从1开始)：")
+
+    print("\n正在从boot.wim提取文件")
+    
+    os.system(wimlibImagex+" apply "+bootWim+" "+str(bootVolume)+" "+runPath+"TempFile\\apply")
+
+    print("\n正在从boot.wim提取Cat文件")
+    emptyDir (runPath + "TempFile\\apply\\Windows\\System32\\CatRoot\\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\\")
+    emptyDir (runPath + "TempFile\\apply\\Windows\\System32\\CatRoot\\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\\")
+    os.system(wimlibImagex+" extract "+bootWim+" "+str(bootVolume)+" @"+runPath+"Bin\\Files\\Cat.txt "+"--dest-dir="+runPath+"TempFile\\apply "+" --nullglob --no-acls")
+
+    print("\n正在清理WinSxS文件")
+    emptyDir (runPath + "TempFile\\apply\\Windows\\WinSxS\\")
+
+    print("\n正在从install.wim提取文件")
+    #os.system(wimlibImagex+" extract "+installWim+" "+str(installVolume)+" \Windows\System32\Recovery\winre.wim "+"--dest-dir="+runPath+"TempFile\\ "+" --nullglob --no-acls")
+    os.system(wimlibImagex+" extract "+installWim+" "+str(installVolume)+" @"+runPath+"Bin\\Files\\install.txt "+"--dest-dir="+runPath+"TempFile\\apply "+" --nullglob --no-acls")
+
+    print("\n正在删除无用文件")
+    for line in open(runPath+"Bin\\Files\\delFiles.txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        if os.path.isfile(runPath+"TempFile\\apply\\"+rs):
+            os.system("del "+runPath+"TempFile\\apply\\"+rs+" /F /Q")
+        if os.path.isdir(runPath+"TempFile\\apply\\"+rs):
+            os.system("rd "+runPath+"TempFile\\apply\\"+rs+" /S /Q")
+
+    for line in open(runPath+"Bin\\Files\\delFilesMore.txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        if os.path.isfile(runPath+"TempFile\\apply\\"+rs):
+            os.system("del "+runPath+"TempFile\\apply\\"+rs+" /F /Q")
+        if os.path.isdir(runPath+"TempFile\\apply\\"+rs):
+            os.system("rd "+runPath+"TempFile\\apply\\"+rs+" /S /Q")
+
+    for line in open(runPath+"Bin\\Files\\delFilesMore(drivers).txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        if os.path.isfile(runPath+"TempFile\\apply\\"+rs):
+            os.system("del "+runPath+"TempFile\\apply\\"+rs+" /F /Q")
+        if os.path.isdir(runPath+"TempFile\\apply\\"+rs):
+            os.system("rd "+runPath+"TempFile\\apply\\"+rs+" /S /Q")
+
+    for line in open(runPath+"Bin\\Files\\clearDir.txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        emptyDir(runPath+"TempFile\\apply\\"+rs)
+    
+    print("\n正在从install.wim提取注册表文件:system,drivers")
+    os.system(wimlibImagex+" extract "+installWim+" "+str(installVolume)+" \Windows\System32\config\system "+"--dest-dir="+runPath+"TempFile\\config "+" --nullglob --no-acls")
+    os.system(wimlibImagex+" extract "+installWim+" "+str(installVolume)+" \Windows\System32\config\drivers "+"--dest-dir="+runPath+"TempFile\\config "+" --nullglob --no-acls")
+
+    print("\n正在添加文件:AddFiles\*")
+    copyDir(runPath+"AddFiles",runPath+"TempFile\\apply")
+    
+
+    print("\n正在加密Pecmd脚本文件")
+    encryptPecmdScript(runPath+"TempFile\\apply\\windows\\system32\\PECMD.ini")
+    
+
+    print("\n正在挂载配置单元")
+    
+    loadConfigUnit (runPath+"TempFile\\config\\drivers","hklm\os_drv")
+    loadConfigUnit (runPath+"TempFile\\config\\system","hklm\os_sys")
+    loadConfigUnit (runPath+"TempFile\\apply\\windows\\system32\\config\\default","hklm\pe_def")
+    loadConfigUnit (runPath+"TempFile\\apply\\windows\\system32\\config\\software","hklm\pe_soft")
+    loadConfigUnit (runPath+"TempFile\\apply\\windows\\system32\\config\\system","hklm\pe_sys")
+    loadConfigUnit (runPath+"TempFile\\apply\\windows\\system32\\config\\DRIVERS","hklm\pe_drv")
+
+    print("\n正在导入注册表项")
+    
+    importReg (runPath + "Bin\\RegistryFiles\\explorer.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\pe_def.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\pe_soft.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\Pecmd.ini.reg")
+
+    importReg (runPath + "Bin\\RegistryFiles\\SOFT_精简注册表.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\CMD字体和透明.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\HDTunePro.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\StartIsBack_浅.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\Windows颜色模式浅.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\打开HotPE模块.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\任务管理器默认详细信息.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\任务栏合并按钮.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\任务栏图标.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\鼠标指针.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\开始菜单不显示搜索.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\开始菜单不显示最近打开项.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板界面.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板删除管理工具.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板删除任务栏和导航.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板删除设备和打印机.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板删除无效图标.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\控制面板删除字体.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除右键3D Edit.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除右键包含到库.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除右键个性化和显示设置.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除右键恢复到之前版本.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除右键设为壁纸.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\删除资源管理器内桌面等文件夹.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\视觉效果.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\修复此电脑右键管理.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\隐藏3D对象等文件夹.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\隐藏导航窗格.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\隐藏开始菜单启动和管理工具.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\隐藏映射网络驱动器.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\隐藏3D对象等文件夹.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\电源键默认重启.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\计算机属性.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\绕过TPM检测.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\右键用记事本打开文件.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\右键显示设置.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\HashTab.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\WinX开机动画.reg")
 
 
-运行目录 = os.path.split( os.path.realpath( sys.argv[0] ) )[0] + "\\"
-执行文件名 =sys.argv[0]
+    print("\n正在替换注册表的C:\\为X:\\")
+    os.system(runPath + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft -y C:\\ -y -r X:\\")
 
-# 初始化
-PE配置 = configparser.ConfigParser()
+    print("\n正在处理Interactive User")
+    os.system(runPath + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft\Classes\AppID -y Interactive User -r")
 
-# 读取配置文件
-PE配置.read(运行目录 +'PE_config.txt', encoding='ANSI')
+    print("\n复制必要的SYSTEM注册表到PE")
+    for line in open(runPath+"\\Bin\\RegistryFiles\\pe_sys.txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        copyRegKey("hklm\\os_sys\\"+rs,"hklm\\pe_sys\\"+rs)
 
-print("正在清理文件")
-清空目录 (运行目录 + "TempFile\\apply")
-清空目录 (运行目录 + "TempFile\\config")
+    importReg (runPath + "Bin\\RegistryFiles\\pe_sys.reg")
 
-bootWim = 运行目录 + "boot.wim"
-boot分卷 = PE配置.get('wim', 'boot分卷')
-wimlibImagex= 运行目录 + "Bin\\Tools\\wimlib\\wimlib-imagex.exe"
+    print("\n复制必要的drivers注册表到PE")
+    for line in open(runPath+"\\Bin\\RegistryFiles\\pe_drv.txt", "r"):  #打开文件
+        rs = line.rstrip('\n')  # 移除行尾换行符
+        copyRegKey("hklm\\os_drv\\"+rs,"hklm\\pe_drv\\"+rs)
 
-print("正在从boot.wim提取文件")
+    os.system(runPath + "copyDriver.bat")
 
-os.system(wimlibImagex+" apply "+bootWim+" "+str(boot分卷)+" "+运行目录+"TempFile\\apply")
-
-print("正在从删除无用文件")
-for line in open(运行目录+"delFiles.txt", "r"):  #打开文件
-    rs = line.rstrip('\n')  # 移除行尾换行符
-    if os.path.isfile(运行目录+"TempFile\\apply\\"+rs):
-        os.system("del "+运行目录+"TempFile\\apply\\"+rs+" /F /Q")
-    if os.path.isdir(运行目录+"TempFile\\apply\\"+rs):
-        os.system("rd "+运行目录+"TempFile\\apply\\"+rs+" /S /Q")
-
-print("正在添加文件:AddFiles\*")
-复制目录(运行目录+"AddFiles",运行目录+"TempFile\\apply")
-
-print("正在添加文件:Edgeless\*")
-复制目录(运行目录+"Edgeless",运行目录+"TempFile\\apply")
-
-print("正在加密Pecmd脚本文件")
-#加密PECMD脚本(运行目录+"TempFile\\apply\\windows\\system32\\PECMD.ini")
-#加密PECMD脚本(运行目录+"TempFile\\apply\\Program Files\\PETools.ini")
-#加密PECMD脚本(运行目录+"TempFile\\apply\\Program Files\\RegistryFiles\\Edgeless\\注册Edgeless.ini")
-
-print("正在挂载配置单元")
-挂载配置单元 (运行目录+"TempFile\\config\\drivers","hklm\os_drv")
-挂载配置单元 (运行目录+"TempFile\\config\\system","hklm\os_sys")
-挂载配置单元 (运行目录+"TempFile\\apply\\windows\\system32\\config\\default","hklm\pe_def")
-挂载配置单元 (运行目录+"TempFile\\apply\\windows\\system32\\config\\software","hklm\pe_soft")
-挂载配置单元 (运行目录+"TempFile\\apply\\windows\\system32\\config\\system","hklm\pe_sys")
-挂载配置单元 (运行目录+"TempFile\\apply\\windows\\system32\\config\\DRIVERS","hklm\pe_drv")
-
-print("正在导入注册表项")
-
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\SOFT_精简注册表.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\CMD字体和透明.reg")
-#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\explorer.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\HDTunePro.reg")
-#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_def.reg")
-#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_soft.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\Pecmd.ini.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\StartIsBack_浅.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\Windows颜色模式浅.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\打开HotPE模块.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\任务管理器默认详细信息.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\任务栏合并按钮.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\任务栏图标.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\鼠标指针.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\开始菜单不显示搜索.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\开始菜单不显示最近打开项.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板界面.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板删除管理工具.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板删除任务栏和导航.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板删除设备和打印机.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板删除无效图标.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\控制面板删除字体.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除右键3D Edit.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除右键包含到库.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除右键个性化和显示设置.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除右键恢复到之前版本.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除右键设为壁纸.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\删除资源管理器内桌面等文件夹.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\视觉效果.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\修复此电脑右键管理.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\隐藏3D对象等文件夹.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\隐藏导航窗格.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\隐藏开始菜单启动和管理工具.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\隐藏映射网络驱动器.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\隐藏3D对象等文件夹.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\电源键默认重启.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\计算机属性.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\绕过TPM检测.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\右键用记事本打开文件.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\右键显示设置.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\HashTab.reg")
-导入注册表项 (运行目录 + "Bin\\RegistryFiles\\WinX开机动画.reg")
+    importReg (runPath + "Bin\\RegistryFiles\\pe_drv.reg")  
 
 
-#os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft -y C:\\ -y -r X:\\")
+    print("\n正在卸载配置单元")
+    
+    unloadConfigUnit ("hklm\os_drv")
+    unloadConfigUnit ("hklm\os_sys")
+    unloadConfigUnit ("hklm\pe_def")
+    unloadConfigUnit ("hklm\pe_soft")
+    unloadConfigUnit ("hklm\pe_sys")
+    unloadConfigUnit ("hklm\pe_drv")
 
-#os.system(运行目录 + "Bin\\Tools\\regfind.exe"+" -p HKEY_LOCAL_MACHINE\\pe_soft\Classes\AppID -y Interactive User -r")
+    os.system("del /f /q /ah \"" + runPath + "TempFile\\apply\\Windows\\System32\\config\\*.*\"")
 
-#os.system(运行目录 + "copyDriver.bat")
+    print("\n正在修改图标")
+    if os.path.exists(runPath+"TempFile\\apply\\Windows\\System32\\imageres.dll"):
+        os.system("copy \""+runPath+"TempFile\\apply\\Windows\System32\\imageres.dll\" \""+runPath+"Bin\\imageres_dll\\imageres.dll\"")
+        os.system(runPath + "Bin\\imageres_dll\\cmd.bat")
+        os.system("del "+runPath+"TempFile\\apply\\windows\\system32\\imageres.dll /F /S /Q")
+        os.system("del "+runPath+"TempFile\\apply\\windows\\SysWOW64\\imageres.dll /F /S /Q")
+        os.system("copy \""+runPath+"Bin\\imageres_dll\\new_imageres.dll\" \""+runPath+"TempFile\\apply\\windows\\system32\\imageres.dll\"")
+        os.system("copy \""+runPath+"Bin\\imageres_dll\\new_imageres.dll\" \""+runPath+"TempFile\\apply\\windows\\SysWOW64\\imageres.dll\"")
+        #os.system("del "+runPath+"TempFile\\imageres32.dll /F /S /Q")
+        #os.system("del "+runPath+"TempFile\\temp_imageres32.dll /F /S /Q")
+        #os.system("del "+runPath+"TempFile\\new_imageres32.dll /F /S /Q")
 
-#导入注册表项 (运行目录 + "Bin\\RegistryFiles\\pe_drv.reg")  
+    print("\n正在破解USB弹出功能文件")
+    os.system(runPath +"Bin\\Tools\\binmay.exe -u \"" + runPath + "TempFile\\apply\\Windows\\System32\\DeviceSetupManager.dll\" -s u:SystemSetupInProgress -r u:DisableDeviceSetupMgr")
 
-print("正在修改图标")
-if os.path.exists(运行目录+"TempFile\\apply\\Windows\\System32\\imageres.dll"):
-    os.system("copy \""+运行目录+"TempFile\\apply\\Windows\System32\\imageres.dll\" \""+运行目录+"Bin\\imageres_dll\\imageres.dll\"")
-    os.system(运行目录 + "Bin\\imageres_dll\\cmd.bat")
-    os.system("del "+运行目录+"TempFile\\apply\\windows\\system32\\imageres.dll /F /S /Q")
-    os.system("del "+运行目录+"TempFile\\apply\\windows\\SysWOW64\\imageres.dll /F /S /Q")
-    os.system("copy \""+运行目录+"Bin\\imageres_dll\\new_imageres.dll\" \""+运行目录+"TempFile\\apply\\windows\\system32\\imageres.dll\"")
-    os.system("copy \""+运行目录+"Bin\\imageres_dll\\new_imageres.dll\" \""+运行目录+"TempFile\\apply\\windows\\SysWOW64\\imageres.dll\"")
-    #os.system("del "+运行目录+"TempFile\\imageres32.dll /F /S /Q")
-    #os.system("del "+运行目录+"TempFile\\temp_imageres32.dll /F /S /Q")
-    #os.system("del "+运行目录+"TempFile\\new_imageres32.dll /F /S /Q")
+    print("\n正在删除dll备份文件")
+    os.system("del \"" + runPath + "TempFile\\apply\\Windows\\System32\\DeviceSetupManager.dll.org\"")
 
-print("正在卸载配置单元")
-卸载配置单元 ("hklm\os_drv")
-卸载配置单元 ("hklm\os_sys")
-卸载配置单元 ("hklm\pe_def")
-卸载配置单元 ("hklm\pe_soft")
-卸载配置单元 ("hklm\pe_sys")
-卸载配置单元 ("hklm\pe_drv")
+    print("\n正在打包成Kernel.wim")
+    os.system(wimlibImagex+" capture \"" + runPath + "TempFile\\apply\" \""+runPath+"\\Kernel.wim\" \"HotPE\" --boot --compress=lzx --rebuild")
 
-os.system("del /f /q /ah \"" + 运行目录 + "TempFile\\apply\\Windows\\System32\\config\\*.*\"")
+    print("\n正在打包成ISO")
+    os.system("del "+runPath+"TempFile\\ISO\\HotPE\\Kernel.wim /F /S /Q")
+    os.system("copy \""+runPath+"Kernel.wim\" \""+runPath+"TempFile\\ISO\\HotPE\\Kernel.wim\"")
+    os.system(runPath +"Bin\\Tools\\oscdimg.exe  -m -o -u2 -udfver102 -h -bootdata:2#p0,e,b"+runPath+"Bin\\Tools\\Etfsboot.com#pEF,e,b"+runPath+"Bin\\Tools\\Efisys.bin -l\"HotPE工具箱\" "+runPath+"TempFile\\ISO\\ "+runPath+"HotPE工具箱.iso")
 
-print("正在破解USB弹出功能文件")
-os.system(运行目录 +"Bin\\Tools\\binmay.exe -u \"" + 运行目录 + "TempFile\\apply\\Windows\\System32\\DeviceSetupManager.dll\" -s u:SystemSetupInProgress -r u:DisableDeviceSetupMgr")
+    input("\n构建结束，回车启动虚拟机测试")
+    os.system(runPath + "启动虚拟机测试.bat")
+    
+    return
 
-print("正在删除dll备份文件")
-os.system("del \"" + 运行目录 + "TempFile\\apply\\Windows\\System32\\DeviceSetupManager.dll.org\"")
 
-print("正在打包成Kernel.wim")
-os.system(wimlibImagex+" capture \"" + 运行目录 + "TempFile\\apply\" \""+运行目录+"\\Kernel.wim\" \"HotPE\" --boot --compress=lzx --rebuild")
 
-print("正在打包成ISO")
-os.system("del "+运行目录+"TempFile\\ISO\\HotPE\\Kernel.wim /F /S /Q")
-os.system("copy \""+运行目录+"Kernel.wim\" \""+运行目录+"TempFile\\ISO\\HotPE\\Kernel.wim\"")
-os.system(运行目录 +"Bin\\Tools\\oscdimg.exe  -m -o -u2 -udfver102 -h -bootdata:2#p0,e,b"+运行目录+"Bin\\Tools\\Etfsboot.com#pEF,e,b"+运行目录+"Bin\\Tools\\Efisys.bin -l\"HotPE工具箱\" "+运行目录+"TempFile\\ISO\\ "+运行目录+"HotPE工具箱.iso")
+#入口
+if __name__=='__main__':
+    #获取管理员权限
+    def is_admin():
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+            return False
 
-input("构建结束，回车启动虚拟机测试")
-os.system(运行目录 + "启动虚拟机测试.bat")
+    if is_admin():
+        begin ()
+    else:
+        os.system("python.exe " + runPath + "HotPEBuildTools.py")
+        #if sys.version_info[0] == 3:
+    	#    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+        

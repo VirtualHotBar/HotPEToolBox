@@ -1,7 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\PE_SOFT\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\System]
-@=" Ù–‘"
-"Position"="Bottom"
-[HKEY_LOCAL_MACHINE\PE_SOFT\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\System\command]
-@="About.exe \\systeminf"

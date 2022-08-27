@@ -1,7 +1,0 @@
-{
-  "name":"UI_Settings",
-  "title":"Layout",
-  "entry":"KB_Layout.xml",
-  "lua":"KB_Layout.lua",
-  "nobaricon":true
-}
