@@ -8,7 +8,7 @@
 
 <h4 align="center">A pure, powerful and elegant Win11PE</h4>
 
-<p align="center">Support Internet, voice, remote, download, hotpe module, edgeless plug-in, MTP, rndis, legacy, UEFI, M 2. Nvme, USB device pop-up, search function, MSI, BitLocker disk unlocking, network sharing, USB disk startup, local startup, ISO generation ...</p>
+<p align="center">Support Internet, Voice, Remote, Download, HotPE Module, Edgeless Plug-in, MTP, RNDIS, Legacy, UEFI, M.2,Nvme, USB Device Pop-up, Search Function, MSI, BitLocker Disk Unlocking, Network Sharing, USB Disk Startup, Local Startup, ISO Generation ...</p>
 
 <p align="center">
   <a href="https://www.hotpe.top">Home Page</a> -
