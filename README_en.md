@@ -17,6 +17,7 @@
   <a href="https://blog.hotpe.top">Bolg</a> 
 </p>
 
+[简体中文](https://github.com/VirtualHotBar/HotPEToolBox/) | English
 ## Release
 
 Please https://www.hotpe.top/download Download.
