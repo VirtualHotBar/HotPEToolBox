@@ -17,6 +17,7 @@
   <a href="https://blog.hotpe.top">博客</a> 
 </p>
 
+简体中文 | [English](https://github.com/VirtualHotBar/HotPEToolBox/blob/main/README_en.md)
 ## 发布版
 
 请到 https://www.hotpe.top/download 进行下载。
