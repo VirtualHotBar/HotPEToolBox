@@ -40,4 +40,4 @@
 
 ## 许可证
 
-HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一律算作HotPE的分支，[详细要求请看文档](https://docs.hotpe.top/#/Devdoc/branch)
+HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一律算作HotPE的分支，[详细要求请看文档](https://docs.hotpe.top/devdoc/branch.html)
