@@ -24,7 +24,7 @@ Please https://www.hotpe.top/download Download.
 ## Use
 This warehouse is HotPEBuildTools
 
-#### 1.Development environment
+### 1.Development environment
 
 Clone this repository, install python, and then mount the original system image to the virtual optical drive
 
