@@ -24,6 +24,7 @@ Please https://www.hotpe.top/download Download.
 
 ## Use
 This warehouse is HotPEBuildTools
+**Applicable to Win10/11 image, version 11 must be lower than or equal to 22000.282**
 
 ### 1.Development environment
 
