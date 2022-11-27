@@ -35,7 +35,7 @@ Clone this repository, install python, and then mount the original system image 
 
 Run "\HotPEBuildTools.PY" ,Follow the prompts
 
-![](https://p2.myzwq.com/i/2022/11/20/63797ce627158.png)
+![](https://p2.myzwq.com/i/2022/11/27/6382ee80adfe8.png)
 
 Demo video：https://www.bilibili.com/video/BV1W3411a7YW
 
