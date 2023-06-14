@@ -1,7 +1,6 @@
 <h1 align="center">
   <br>
-<img src="https://github.com/VirtualHotBar/HotPEToolBox/assets/96966978/ea7edc26-3b62-4cbe-9f3f-5e875f026de9
-" width="150"/>
+<img src="https://github.com/VirtualHotBar/HotPEToolBox/assets/96966978/ea7edc26-3b62-4cbe-9f3f-5e875f026de9" width="150"/>
   <br>
   HotPE 工具箱
   <br>
