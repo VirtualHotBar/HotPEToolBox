@@ -42,5 +42,5 @@ HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一�
 
 ## 更多
 - [HotPE Client](https://github.com/VirtualHotBar/HotPE_Client) - HotPE的聚合客户端
-- [HPM CIL] - HPM(HotPE Module)加载器实现
+- [HPM CIL](https://github.com/VirtualHotBar/HPM-cil/) - HPM(HotPE Module)加载器实现
 
