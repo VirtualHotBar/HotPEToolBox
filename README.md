@@ -17,7 +17,6 @@
   <a href="https://blog.hotpe.top">博客</a> 
 </p>
 
-简体中文 | [English](https://github.com/VirtualHotBar/HotPEToolBox/blob/main/README_en.md)
 ## 发布版
 
 请到 https://www.hotpe.top/download 进行下载。
@@ -33,10 +32,7 @@
 
 ### 2.生成HotPE
 
-
 运行 "\HotPEBuildTools.PY"  根据提示操作
-
-![](https://p2.myzwq.com/i/2022/11/27/6382ee80adfe8.png)
 
 演示视频：https://www.bilibili.com/video/BV1W3411a7YW
 
@@ -45,4 +41,6 @@
 HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一律算作HotPE的分支，[详细要求请看文档](https://docs.hotpe.top/devdoc/branch.html)
 
 ## 更多
-体验新版 [HotPE的聚合客户端](https://github.com/VirtualHotBar/HotPE_Client)
+- [HotPE Client](https://github.com/VirtualHotBar/HotPE_Client) - HotPE的聚合客户端
+- [HPM CIL] - HPM(HotPE Module)加载器实现
+
