@@ -44,3 +44,12 @@ HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一�
 - [HotPE Client](https://github.com/VirtualHotBar/HotPE_Client) - HotPE的聚合客户端
 - [HPM CIL](https://github.com/VirtualHotBar/HPM-cil/) - HPM(HotPE Module)加载器实现
 
+## Thanks
+<p>
+  本项目的 AI API 由
+  <a href="https://tokeness.io">
+    <img src="https://docs.tokeness.io/logo.svg" alt="Tokeness" height="20">
+    Tokeness
+  </a>
+  赞助提供。
+</p>
