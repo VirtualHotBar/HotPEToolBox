@@ -48,8 +48,7 @@ HotPE的自编代码基于MIT许可证开源。使用本工具生成的WinPE一�
 <p>
   本项目的 AI API 由
   <a href="https://tokeness.io">
-    <img src="https://docs.tokeness.io/logo.svg" alt="Tokeness" height="20">
-    Tokeness
+    Tokeness.io
   </a>
   赞助提供。
 </p>
